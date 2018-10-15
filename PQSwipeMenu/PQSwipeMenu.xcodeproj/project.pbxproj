@@ -25,6 +25,11 @@
 		602DAB8821743CE0003C1A4A /* SwipeMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 602DAB7821743CE0003C1A4A /* SwipeMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		602DAB8B21743CE0003C1A4A /* SwipeMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602DAB7621743CE0003C1A4A /* SwipeMenu.framework */; };
 		602DAB8C21743CE0003C1A4A /* SwipeMenu.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 602DAB7621743CE0003C1A4A /* SwipeMenu.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		602DAB99217441F2003C1A4A /* PQSwipeMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602DAB6421733FF4003C1A4A /* PQSwipeMenuController.swift */; };
+		602DAB9A217441F2003C1A4A /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602DAB662173443E003C1A4A /* UICollectionView.swift */; };
+		602DAB9B217441F2003C1A4A /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602DAB6821734659003C1A4A /* CGRect.swift */; };
+		602DAB9C217441F2003C1A4A /* PQSwipeMenuTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602DAB6B21734C01003C1A4A /* PQSwipeMenuTitleCell.swift */; };
+		602DAB9D217441F2003C1A4A /* PQSwipeMenuContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602DAB6D21734C34003C1A4A /* PQSwipeMenuContentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -470,6 +475,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602DAB99217441F2003C1A4A /* PQSwipeMenuController.swift in Sources */,
+				602DAB9A217441F2003C1A4A /* UICollectionView.swift in Sources */,
+				602DAB9B217441F2003C1A4A /* CGRect.swift in Sources */,
+				602DAB9C217441F2003C1A4A /* PQSwipeMenuTitleCell.swift in Sources */,
+				602DAB9D217441F2003C1A4A /* PQSwipeMenuContentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,6 +660,7 @@
 		602DAB5C21733FD9003C1A4A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B2BXA8AH8F;
@@ -668,6 +679,7 @@
 		602DAB5D21733FD9003C1A4A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = B2BXA8AH8F;
