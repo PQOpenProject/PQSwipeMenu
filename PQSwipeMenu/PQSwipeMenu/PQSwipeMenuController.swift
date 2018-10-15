@@ -85,7 +85,7 @@ public extension PQSwipeMenuController {
     public func resetFrame(_ closure: () -> (titleViewFrame : CGRect, contentViewFrame: CGRect)) {
         let frames = closure()
         titleCollectionView.frame = frames.titleViewFrame
-        contentCollectionView.frame = frames.titleViewFrame
+        contentCollectionView.frame = frames.contentViewFrame
     }
     
     public func updateCurrentIndex(_ index: Int) {
