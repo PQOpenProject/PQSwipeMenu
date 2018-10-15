@@ -33,9 +33,13 @@ open class PQSwipeMenuController: UIViewController {
         public var lineColor: UIColor
         /// line height 2
         public var lineHeight: CGFloat
+        /// default nil
+        public var titleViewBackgroundColor: UIColor?
+        /// default nil
+        public var contentViewBackgroundColor: UIColor?
         
         public static func `default`() -> PQSwipeMenuOptions {
-            return PQSwipeMenuOptions(titleColor: .white, titleSelectedColor: .orange, titleFont: UIFont.systemFont(ofSize: 15), titleAlignment: .center, titleHeight: 40, titleSpacing: 10, lineColor: .white, lineHeight: 2)
+            return PQSwipeMenuOptions(titleColor: .white, titleSelectedColor: .orange, titleFont: UIFont.systemFont(ofSize: 15), titleAlignment: .center, titleHeight: 40, titleSpacing: 10, lineColor: .white, lineHeight: 2, titleViewBackgroundColor: nil, contentViewBackgroundColor: nil)
         }
     }
 
@@ -173,7 +177,6 @@ extension PQSwipeMenuController {
             delegate: self,
             dataSource: self)
         contentCollectionView.register(PQSwipeMenuContentCell.self, forCellWithReuseIdentifier: PQSwipeMenuContentCell.identifier)
-        contentCollectionView.backgroundColor = UIColor.yellow
         contentCollectionView.isPagingEnabled = true
         
         view.addSubview(titleCollectionView)
