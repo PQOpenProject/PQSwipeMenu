@@ -17,7 +17,7 @@ class PQSwipeMenuTitleCell: UICollectionViewCell {
     
     var lineHeight: CGFloat = 2 {
         didSet {
-            layoutViews()
+            setConstraints()
         }
     }
     
@@ -34,16 +34,64 @@ class PQSwipeMenuTitleCell: UICollectionViewCell {
         setup()
     }
     
-    private func layoutViews() {
-        let width = contentView.frame.width
-        let height = contentView.frame.height
-        titleLabel.frame = CGRect(x: 0, y: 0, width: width, height: height - lineHeight)
-        lineView.frame = CGRect(x: 0, y: height - lineHeight, width: width, height: lineHeight)
-    }
     
     private func setup() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(lineView)
+        
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        lineView.translatesAutoresizingMaskIntoConstraints = false
+        
+        setConstraints()
+    }
+    
+    private func setConstraints() {
+        #if true
+        let left = NSLayoutConstraint(
+            item: titleLabel,
+            attribute: .left,
+            relatedBy: .equal,
+            toItem: contentView,
+            attribute: .left,
+            multiplier: 1,
+            constant: 0)
+        contentView.addConstraint(left)
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel
+            , attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1, constant: 0))
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel
+            , attribute: .top, relatedBy: .equal, toItem: contentView, attribute: .top, multiplier: 1, constant: 0))
+
+        contentView.addConstraint(NSLayoutConstraint(item: titleLabel
+            , attribute: .bottom, relatedBy: .equal, toItem: lineView, attribute: .top, multiplier: 1, constant: 0))
+
+
+        contentView.addConstraint(NSLayoutConstraint(item: lineView
+            , attribute: .left, relatedBy: .equal, toItem: contentView, attribute: .left, multiplier: 1, constant: 0))
+        contentView.addConstraint(NSLayoutConstraint(item: lineView
+            , attribute: .right, relatedBy: .equal, toItem: contentView, attribute: .right, multiplier: 1, constant: 0))
+        contentView.addConstraint(NSLayoutConstraint(item: lineView
+            , attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1, constant: 0))
+
+        contentView.addConstraint(NSLayoutConstraint(item: lineView
+            , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: lineHeight))
+
+
+
+        #else
+        let viewDict:[String: UIView] = ["label":titleLabel, "line": lineView]
+        let metricsDict = ["space":0]
+        let labelHorizontalVFL = "H:|-[label]-|"
+        let labelHorizontalContaraints = NSLayoutConstraint.constraints(withVisualFormat: labelHorizontalVFL, options: NSLayoutConstraint.FormatOptions.alignAllLeft, metrics: nil, views: viewDict)
+        let lineHorizontalVFL = "H:|-[line]-|"
+        let lineHorizontalContaraints = NSLayoutConstraint.constraints(withVisualFormat: lineHorizontalVFL, options: NSLayoutConstraint.FormatOptions.alignAllLeft, metrics: nil, views: viewDict)
+        let verticalVFL = "V:|-[label]-[line(\(lineHeight))]-|"
+        let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: verticalVFL, options: .directionLeadingToTrailing, metrics: nil, views: viewDict)
+       
+
+       contentView.addConstraints(labelHorizontalContaraints)
+        contentView.addConstraints(lineHorizontalContaraints)
+        contentView.addConstraints(verticalConstraints)
+    #endif
     }
     
    

@@ -8,6 +8,18 @@
 
 import UIKit
 
+public extension UIViewController {
+    public var navHeight: CGFloat {
+        let statusHeight = UIApplication.shared.statusBarFrame.height
+        let navHeight = navigationController?.navigationBar.frame.height ?? 0
+        return statusHeight + navHeight
+    }
+    
+    public var tabBarHeight: CGFloat  {
+        return tabBarController?.tabBar.frame.height ?? 0
+    }
+}
+
 @objc public protocol PQSwipeMenuControllerDelegate: NSObjectProtocol {
     @objc func swipeMenuTitle(_ controller: PQSwipeMenuController, index: Int, child: UIViewController) -> String?
     @objc optional func swipeMenuSelected(_ controller: PQSwipeMenuController, index: Int, child: UIViewController)
@@ -66,20 +78,20 @@ open class PQSwipeMenuController: UIViewController {
         setup()
     }
     
-    open override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        if titleCollectionView.frame == .zero {
-            let statusHeight = UIApplication.shared.statusBarFrame.height
-            let navHeight = navigationController?.navigationBar.frame.height ?? 0
-            let offsetY = statusHeight + navHeight
-            let width = view.frame.width
-            let height = view.frame.height
-            titleCollectionView.frame = CGRect(x: 0, y: offsetY, width: width, height: menuOptions.titleHeight)
-            let tabBarHeight = tabBarController?.view.frame.height ?? 0
-            let contentCollectionViewHeight = height - titleCollectionView.frame.maxY - tabBarHeight
-            contentCollectionView.frame = CGRect(x: 0, y: offsetY + menuOptions.titleHeight, width: width, height: contentCollectionViewHeight)
-        }
-    }
+//    open override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        if titleCollectionView.frame == .zero {
+//            let statusHeight = UIApplication.shared.statusBarFrame.height
+//            let navHeight = navigationController?.navigationBar.frame.height ?? 0
+//            let offsetY = statusHeight + navHeight
+//            let width = view.frame.width
+//            let height = view.frame.height
+//            titleCollectionView.frame = CGRect(x: 0, y: offsetY, width: width, height: menuOptions.titleHeight)
+//            let tabBarHeight = tabBarController?.view.frame.height ?? 0
+//            let contentCollectionViewHeight = height - titleCollectionView.frame.maxY - tabBarHeight
+//            contentCollectionView.frame = CGRect(x: 0, y: offsetY + menuOptions.titleHeight, width: width, height: contentCollectionViewHeight)
+//        }
+//    }
     
     // MARK: - private perproty
     private var titleCollectionView: UICollectionView!
@@ -154,18 +166,15 @@ public extension PQSwipeMenuController {
     
     override open func addChild(_ childController: UIViewController) {
         super.addChild(childController)
-//        childController.didMove(toParent: self)
+        childController.didMove(toParent: self)
         let indexPath = IndexPath(item: children.count - 1, section: 0)
         titleCollectionView.insertItems(at: [indexPath])
         contentCollectionView.insertItems(at: [indexPath])
         
         currentIndex = children.count - 1
         let currentIndexPath = IndexPath(item: currentIndex, section: 0)
-        let indexPaths = [lastCurrentIndexPath, currentIndexPath]
-        titleCollectionView.reloadItems(at: indexPaths)
-        lastCurrentIndexPath = currentIndexPath
-        
-        titleCollectionView.scrollToItem(at: currentIndexPath, at: UICollectionView.ScrollPosition.left, animated: true)
+        // 选中最后一项
+        collectionView(titleCollectionView, didSelectItemAt: currentIndexPath)
         
     }
 }
@@ -174,13 +183,13 @@ public extension PQSwipeMenuController {
 extension PQSwipeMenuController {
     private func setup() {
         titleCollectionView = UICollectionView(
-            frame: .zero,
+            frame: CGRect(height: menuOptions.titleHeight),
             collectionViewLayout: UICollectionViewFlowLayout(interitemSpacing: menuOptions.titleSpacing),
             delegate: self,
             dataSource: self)
         titleCollectionView.register(PQSwipeMenuTitleCell.self, forCellWithReuseIdentifier: PQSwipeMenuTitleCell.identifier)
         contentCollectionView = UICollectionView(
-            frame: .zero,
+            frame: CGRect(x: 0, y: menuOptions.titleHeight, width: view.frame.width, height: view.frame.height - menuOptions.titleHeight),
             collectionViewLayout: UICollectionViewFlowLayout(interitemSpacing: 0),
             delegate: self,
             dataSource: self)
@@ -287,14 +296,14 @@ extension PQSwipeMenuController: UICollectionViewDataSource, UICollectionViewDel
     
     private func titleCollectionCellSize(cellForItemAt indexPath: IndexPath) -> CGSize {
         
-        if let size = titleWidths[indexPath] {
-            return size
-        }
+//        if let size = titleWidths[indexPath] {
+//            return size
+//        }
         
         let title = swipeMenuDelegate?.swipeMenuTitle(self, index: indexPath.item, child: children[indexPath.item])
         if let title = title {
             let bound = (title as NSString).boundingRect(with: CGSize(width: CGFloat(MAXFLOAT), height: 0), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font : menuOptions.titleFont], context: nil)
-            let size = CGSize(width: bound.width + 10, height: menuOptions.titleHeight)
+            let size = CGSize(width: bound.width + 20, height: menuOptions.titleHeight)
             titleWidths[indexPath] = size
             return size
         }
