@@ -33,13 +33,10 @@ open class PQSwipeMenuController: UIViewController {
         public var lineColor: UIColor
         /// line height 2
         public var lineHeight: CGFloat
-        /// default nil
-        public var titleViewBackgroundColor: UIColor?
-        /// default nil
-        public var contentViewBackgroundColor: UIColor?
+        
         
         public static func `default`() -> PQSwipeMenuOptions {
-            return PQSwipeMenuOptions(titleColor: .white, titleSelectedColor: .orange, titleFont: UIFont.systemFont(ofSize: 15), titleAlignment: .center, titleHeight: 40, titleSpacing: 10, lineColor: .white, lineHeight: 2, titleViewBackgroundColor: nil, contentViewBackgroundColor: nil)
+            return PQSwipeMenuOptions(titleColor: .white, titleSelectedColor: .orange, titleFont: UIFont.systemFont(ofSize: 15), titleAlignment: .center, titleHeight: 40, titleSpacing: 10, lineColor: .white, lineHeight: 2)
         }
     }
 
@@ -50,6 +47,18 @@ open class PQSwipeMenuController: UIViewController {
     public weak var swipeMenuDelegate: PQSwipeMenuControllerDelegate?
     /// options
     public var menuOptions = PQSwipeMenuOptions.default()
+    /// default nil
+    public var titleViewBackgroundColor: UIColor? {
+        didSet {
+            titleCollectionView.backgroundColor = titleViewBackgroundColor
+        }
+    }
+    /// default nil
+    public var contentViewBackgroundColor: UIColor? {
+        didSet {
+            contentCollectionView.backgroundColor = titleViewBackgroundColor
+        }
+    }
     
     // MARK: - system method
     override open func viewDidLoad() {
@@ -169,7 +178,6 @@ extension PQSwipeMenuController {
             collectionViewLayout: UICollectionViewFlowLayout(interitemSpacing: menuOptions.titleSpacing),
             delegate: self,
             dataSource: self)
-        titleCollectionView.backgroundColor = UIColor.orange
         titleCollectionView.register(PQSwipeMenuTitleCell.self, forCellWithReuseIdentifier: PQSwipeMenuTitleCell.identifier)
         contentCollectionView = UICollectionView(
             frame: .zero,
