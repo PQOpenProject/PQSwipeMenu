@@ -78,6 +78,12 @@ open class PQSwipeMenuController: UIViewController {
 
 // MARK: - public method
 public extension PQSwipeMenuController {
+    public func resetFrame(_ closure: () -> (titleViewFrame : CGRect, contentViewFrame: CGRect)) {
+        let frames = closure()
+        titleCollectionView.frame = frames.titleViewFrame
+        contentCollectionView.frame = frames.titleViewFrame
+    }
+    
     public func updateCurrentIndex(_ index: Int) {
         currentIndex = index
         let currentIndexPath = IndexPath(item: currentIndex, section: 0)
