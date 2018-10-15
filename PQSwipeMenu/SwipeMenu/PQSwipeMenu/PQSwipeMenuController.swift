@@ -254,7 +254,6 @@ extension PQSwipeMenuController: UICollectionViewDataSource, UICollectionViewDel
         cell.titleLabel.textAlignment = menuOptions.titleAlignment
         cell.lineColor = isCurrent ? menuOptions.lineColor : UIColor.clear
         cell.lineHeight = menuOptions.lineHeight
-        cell.backgroundColor = UIColor(hue: CGFloat(arc4random() % 100) / 100.0, saturation: 1, brightness: 1, alpha: 1)
         return cell
     }
     
