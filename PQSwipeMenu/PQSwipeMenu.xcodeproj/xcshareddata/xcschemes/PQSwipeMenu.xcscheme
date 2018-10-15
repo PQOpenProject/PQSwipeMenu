@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "602DAB7521743CE0003C1A4A"
-               BuildableName = "SwipeMenu.framework"
-               BlueprintName = "SwipeMenu"
+               BlueprintIdentifier = "602DABA72174445D003C1A4A"
+               BuildableName = "PQSwipeMenu.framework"
+               BlueprintName = "PQSwipeMenu"
                ReferencedContainer = "container:PQSwipeMenu.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "602DABB02174445E003C1A4A"
+               BuildableName = "PQSwipeMenuTests.xctest"
+               BlueprintName = "PQSwipeMenuTests"
+               ReferencedContainer = "container:PQSwipeMenu.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "602DABA72174445D003C1A4A"
+            BuildableName = "PQSwipeMenu.framework"
+            BlueprintName = "PQSwipeMenu"
+            ReferencedContainer = "container:PQSwipeMenu.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "602DAB7521743CE0003C1A4A"
-            BuildableName = "SwipeMenu.framework"
-            BlueprintName = "SwipeMenu"
+            BlueprintIdentifier = "602DABA72174445D003C1A4A"
+            BuildableName = "PQSwipeMenu.framework"
+            BlueprintName = "PQSwipeMenu"
             ReferencedContainer = "container:PQSwipeMenu.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "602DAB7521743CE0003C1A4A"
-            BuildableName = "SwipeMenu.framework"
-            BlueprintName = "SwipeMenu"
+            BlueprintIdentifier = "602DABA72174445D003C1A4A"
+            BuildableName = "PQSwipeMenu.framework"
+            BlueprintName = "PQSwipeMenu"
             ReferencedContainer = "container:PQSwipeMenu.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

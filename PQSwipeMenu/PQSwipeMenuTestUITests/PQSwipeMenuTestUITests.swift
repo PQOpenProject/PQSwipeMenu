@@ -1,14 +1,14 @@
 //
-//  PQSwipeMenuUITests.swift
-//  PQSwipeMenuUITests
+//  PQSwipeMenuTestUITests.swift
+//  PQSwipeMenuTestUITests
 //
-//  Created by 盘国权 on 2018/10/14.
+//  Created by 盘国权 on 2018/10/15.
 //  Copyright © 2018年 pgq. All rights reserved.
 //
 
 import XCTest
 
-class PQSwipeMenuUITests: XCTestCase {
+class PQSwipeMenuTestUITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

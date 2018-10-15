@@ -14,27 +14,27 @@ import UIKit
     @objc optional func swipeMenuRepeatSelected(_ controller: PQSwipeMenuController, index: Int, child: UIViewController)
 }
 
-public class PQSwipeMenuController: UIViewController {
+open class PQSwipeMenuController: UIViewController {
     
     public struct PQSwipeMenuOptions {
         /// default white
-        var titleColor: UIColor
+        public var titleColor: UIColor
         /// default orange
-        var titleSelectedColor: UIColor
+        public var titleSelectedColor: UIColor
         /// default systemFont(ofSize: 15)
-        var titleFont: UIFont
+        public var titleFont: UIFont
         /// center
-        var titleAlignment: NSTextAlignment
+        public var titleAlignment: NSTextAlignment
         /// title view height default 40
-        var titleHeight: CGFloat
+        public var titleHeight: CGFloat
         /// title spacing default 0
-        var titleSpacing: CGFloat
+        public var titleSpacing: CGFloat
         /// line color default white
-        var lineColor: UIColor
+        public var lineColor: UIColor
         /// line height 2
-        var lineHeight: CGFloat
+        public var lineHeight: CGFloat
         
-        static func `default`() -> PQSwipeMenuOptions {
+        public static func `default`() -> PQSwipeMenuOptions {
             return PQSwipeMenuOptions(titleColor: .white, titleSelectedColor: .orange, titleFont: UIFont.systemFont(ofSize: 15), titleAlignment: .center, titleHeight: 40, titleSpacing: 10, lineColor: .white, lineHeight: 2)
         }
     }
@@ -48,12 +48,12 @@ public class PQSwipeMenuController: UIViewController {
     public var menuOptions = PQSwipeMenuOptions.default()
     
     // MARK: - system method
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         setup()
     }
     
-    public override func viewWillLayoutSubviews() {
+    open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         if titleCollectionView.frame == .zero {
             let statusHeight = UIApplication.shared.statusBarFrame.height
@@ -133,7 +133,7 @@ public extension PQSwipeMenuController {
         reload(index: index)
     }
     
-    public override func addChild(_ childController: UIViewController) {
+    override open func addChild(_ childController: UIViewController) {
         super.addChild(childController)
 //        childController.didMove(toParent: self)
         let indexPath = IndexPath(item: children.count - 1, section: 0)

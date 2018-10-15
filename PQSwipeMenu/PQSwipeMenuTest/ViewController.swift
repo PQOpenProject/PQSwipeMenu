@@ -7,12 +7,13 @@
 //
 
 import UIKit
-import SwipeMenu
+import PQSwipeMenu
 
 class ViewController: PQSwipeMenuController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         menuOptions.titleColor = .gray
         menuOptions.titleSelectedColor = .white
         menuOptions.lineColor = .white

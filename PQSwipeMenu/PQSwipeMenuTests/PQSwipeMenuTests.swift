@@ -2,7 +2,7 @@
 //  PQSwipeMenuTests.swift
 //  PQSwipeMenuTests
 //
-//  Created by 盘国权 on 2018/10/14.
+//  Created by 盘国权 on 2018/10/15.
 //  Copyright © 2018年 pgq. All rights reserved.
 //
 
