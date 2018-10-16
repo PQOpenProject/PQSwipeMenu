@@ -198,6 +198,9 @@ extension PQSwipeMenuController {
         
         view.addSubview(titleCollectionView)
         view.addSubview(contentCollectionView)
+        
+        titleCollectionView.backgroundColor = .clear
+        contentCollectionView.backgroundColor = .clear
     }
     
     private func calculationCurrentIndex() {

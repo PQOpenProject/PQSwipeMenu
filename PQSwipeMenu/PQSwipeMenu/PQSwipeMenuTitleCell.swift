@@ -41,7 +41,7 @@ class PQSwipeMenuTitleCell: UICollectionViewCell {
         
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         lineView.translatesAutoresizingMaskIntoConstraints = false
-        
+        self.backgroundColor = .clear
         setConstraints()
     }
     
