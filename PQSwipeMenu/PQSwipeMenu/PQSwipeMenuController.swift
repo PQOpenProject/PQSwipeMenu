@@ -171,6 +171,8 @@ public extension PQSwipeMenuController {
         titleCollectionView.insertItems(at: [indexPath])
         contentCollectionView.insertItems(at: [indexPath])
         
+//        reload()
+        
         currentIndex = children.count - 1
         let currentIndexPath = IndexPath(item: currentIndex, section: 0)
         // 选中最后一项
@@ -287,13 +289,16 @@ extension PQSwipeMenuController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func contentCollectionCell(cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = contentCollectionView.dequeueReusableCell(withReuseIdentifier: PQSwipeMenuContentCell.identifier, for: indexPath)
+        let cell = contentCollectionView.dequeueReusableCell(withReuseIdentifier: PQSwipeMenuContentCell.identifier, for: indexPath) as! PQSwipeMenuContentCell
+        let controller = children[indexPath.item]
+        controller.view.frame = cell.contentView.bounds
         cell.contentView.subviews.forEach {
             $0.removeFromSuperview()
         }
-        let controller = children[indexPath.item]
-        controller.view.frame = cell.contentView.bounds
-        cell.contentView.addSubview(controller.view)
+//        if cell.contentView.subviews.count == 1 {
+            cell.contentView.addSubview(controller.view)
+//        }
+        print("content subviews count:", cell.contentView.subviews.count)
         return cell
     }
     
