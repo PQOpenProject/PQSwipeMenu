@@ -78,6 +78,14 @@ open class PQSwipeMenuController: UIViewController {
         setup()
     }
     
+    open override func addChild(_ childController: UIViewController) {
+        super.addChild(childController)
+        childController.didMove(toParent: self)
+        let indexPath = IndexPath(item: children.count - 1, section: 0)
+        titleCollectionView.insertItems(at: [indexPath])
+        contentCollectionView.insertItems(at: [indexPath])
+    }
+    
 //    open override func viewWillLayoutSubviews() {
 //        super.viewWillLayoutSubviews()
 //        if titleCollectionView.frame == .zero {
@@ -164,21 +172,18 @@ public extension PQSwipeMenuController {
         reload(index: index)
     }
     
-    override open func addChild(_ childController: UIViewController) {
-        super.addChild(childController)
-        childController.didMove(toParent: self)
-        let indexPath = IndexPath(item: children.count - 1, section: 0)
-        titleCollectionView.insertItems(at: [indexPath])
-        contentCollectionView.insertItems(at: [indexPath])
-        
-//        reload()
-        
-        currentIndex = children.count - 1
-        let currentIndexPath = IndexPath(item: currentIndex, section: 0)
-        // 选中最后一项
-        collectionView(titleCollectionView, didSelectItemAt: currentIndexPath)
-        
+    func addChildMoveToLastIndex(_ childController: UIViewController, move: Bool = false) {
+        addChild(childController)
+
+        if move {
+            // refresh
+            currentIndex = children.count - 1
+            let currentIndexPath = IndexPath(item: currentIndex, section: 0)
+            // 选中最后一项
+            collectionView(titleCollectionView, didSelectItemAt: currentIndexPath)
+        }
     }
+
 }
 
 // MARK: - private method
