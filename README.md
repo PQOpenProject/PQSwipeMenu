@@ -4,5 +4,5 @@
 
 使用carthage安装
 ```swift
-github "codepgq/PQSwipeMenu"
+github "PQOpenProject/PQSwipeMenu"
 ```
