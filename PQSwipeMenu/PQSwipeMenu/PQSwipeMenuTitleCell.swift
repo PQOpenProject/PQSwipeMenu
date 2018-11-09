@@ -75,8 +75,6 @@ class PQSwipeMenuTitleCell: UICollectionViewCell {
         contentView.addConstraint(NSLayoutConstraint(item: lineView
             , attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: lineHeight))
 
-
-
         #else
         let viewDict:[String: UIView] = ["label":titleLabel, "line": lineView]
         let metricsDict = ["space":0]
