@@ -81,9 +81,11 @@ open class PQSwipeMenuController: UIViewController {
     open override func addChild(_ childController: UIViewController) {
         super.addChild(childController)
         childController.didMove(toParent: self)
-        let indexPath = IndexPath(item: children.count - 1, section: 0)
-        titleCollectionView.insertItems(at: [indexPath])
-        contentCollectionView.insertItems(at: [indexPath])
+//        let indexPath = IndexPath(item: children.count - 1, section: 0)
+//        titleCollectionView.insertItems(at: [indexPath])
+//        contentCollectionView.insertItems(at: [indexPath])
+         titleCollectionView.reloadData()
+        contentCollectionView.reloadData()
     }
     
 //    open override func viewWillLayoutSubviews() {
