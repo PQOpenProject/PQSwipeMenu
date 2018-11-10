@@ -302,10 +302,9 @@ extension PQSwipeMenuController: UICollectionViewDataSource, UICollectionViewDel
         cell.contentView.subviews.forEach {
             $0.removeFromSuperview()
         }
-//        if cell.contentView.subviews.count == 1 {
-            cell.contentView.addSubview(controller.view)
-//        }
-        print("content subviews count:", cell.contentView.subviews.count)
+
+        cell.contentView.addSubview(controller.view)
+//        print("content subviews count:", cell.contentView.subviews.count)
         return cell
     }
     
