@@ -68,7 +68,7 @@ open class PQSwipeMenuController: UIViewController {
     /// default nil
     public var contentViewBackgroundColor: UIColor? {
         didSet {
-            contentCollectionView.backgroundColor = titleViewBackgroundColor
+            contentCollectionView.backgroundColor = contentViewBackgroundColor
         }
     }
     
