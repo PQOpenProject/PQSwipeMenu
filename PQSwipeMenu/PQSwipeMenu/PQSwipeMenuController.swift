@@ -72,6 +72,16 @@ open class PQSwipeMenuController: UIViewController {
         }
     }
     
+    /// 内容视图的大小
+    public var contentFrame: CGRect {
+        return contentCollectionView.frame
+    }
+    
+    /// 标题视图的大小
+    public var titleFrame: CGRect {
+        return titleCollectionView.frame
+    }
+    
     // MARK: - system method
     override open func viewDidLoad() {
         super.viewDidLoad()
